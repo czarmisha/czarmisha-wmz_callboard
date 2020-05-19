@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!--{% load static %}-->
+{%block content%}
+<div class="col-md-8">
+    <h1 class="text-center">Добавление новости</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for input in form %}
+        <div class="form-group row">
+            <label for="{{input.id_for_label}}" class="col-sm-3 col-form-label">{{input.label}}</label>
+            <div class="col-sm-9">
+                {{input}}
+            </div>
+            <div class="invalid-feedback">
+                {{ form.title.errors }}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+
+</div>
+{% endblock %}

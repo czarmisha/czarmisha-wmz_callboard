@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{%block sidebar%}
+{%include 'inc/_sidebar.html'%}
+{%endblock%}
+{%block content%}
+
+<div class="row">
+    {% for ad in ads %}
+    <div class="col-md-6">
+        <div class="card mt-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <img src="{{ ad.category.image.url }}" alt="" width="80" height="35">
+                <span class="badge badge-warning">{{ad.ad_type}}</span>
+            </div>
+            <div class="card-body">
+                <p class="text-center"><strong>{{ad.title}}</strong></p>
+                <p><span class="badge badge-secondary">Цена</span> {{ad.price}} {{ ad.currency }}</p>
+                <p><span class="badge badge-secondary">Телефон</span> {{ad.phone}}</p>
+            </div>
+            <div class="card-footer text-muted d-flex justify-content-between align-items-center">
+                <p><span class="badge badge-info">Город</span> {{ad.city}}</p>
+                <p>{{ ad.pub_date|date:"d M Y" }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{%endblock%}
